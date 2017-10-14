@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1313aaeff0244396ad868283e6ce3980" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Booking_Details" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Customer_Info" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Employee_Info" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Movie_Info" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Payment_Info" Width="1.5" PointX="10.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Seat_Details" Width="1.5" PointX="10.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Show_Info" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Theater_Info" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Booking_Details_Customer_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Booking_Details_Show_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Booking_Details_Ticket_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Booking_Details_Ticket_No" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Employee_Info_Theater_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Movie_Info_Movie_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Show_Id_Theater_Id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
