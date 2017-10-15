@@ -18,7 +18,7 @@
     <form id="form1" runat="server">
         <table class="auto-style1">
             <tr>
-                <td class="auto-style2"></td>
+                <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style2">
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="Location" DataValueField="Location" style="margin-bottom: 0px" AutoPostBack="True">
                     </asp:DropDownList>
@@ -30,8 +30,8 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td>
-                    <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                <td style="margin-left: 40px">
+                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True">
                     </asp:RadioButtonList>
                 </td>
                 <td>&nbsp;</td>
