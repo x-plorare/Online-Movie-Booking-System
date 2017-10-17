@@ -20,18 +20,18 @@
             <tr>
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="Location" DataValueField="Location" style="margin-bottom: 0px" AutoPostBack="True">
+                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="Location" DataValueField="Location" style="margin-bottom: 0px" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style2"></td>
                 <td class="auto-style2">
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:online-ticket-databaseConnectionString %>" SelectCommand="SELECT * FROM [Theater_Info]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:online-ticket-databaseConnectionString %>" SelectCommand="SELECT * FROM [Theater_Info]" ></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td style="margin-left: 40px">
-                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True">
+                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                     </asp:RadioButtonList>
                 </td>
                 <td>&nbsp;</td>
@@ -51,9 +51,7 @@
                     </asp:GridView>
                 </td>
                 <td>
-                    <asp:GridView ID="GridView2" runat="server">
-                    </asp:GridView>
-                </td>
+                    &nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

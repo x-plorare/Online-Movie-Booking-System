@@ -79,6 +79,13 @@
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
+    <Content Include="WebForm3.aspx" />
+    <Content Include="Xmls\Seats1.xml" />
+    <Content Include="Xmls\Seats2.xml" />
+    <Content Include="Xmls\Seats3.xml" />
+    <Content Include="Xmls\Seats4.xml" />
+    <Content Include="Xmls\Seats5.xml" />
+    <Content Include="Xmls\XMLFile1.xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Booking_Details.cs">
@@ -143,6 +150,13 @@
     </Compile>
     <Compile Include="WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
