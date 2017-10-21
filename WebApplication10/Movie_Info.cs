@@ -19,10 +19,11 @@ namespace WebApplication10
             this.Show_Info = new HashSet<Show_Info>();
         }
     
-        public string Movie_Id { get; set; }
+        public int Movie_Id { get; set; }
         public string Movie_Name { get; set; }
         public string Movie_Description { get; set; }
         public Nullable<double> Movie_Rating { get; set; }
+        public string M_ID { get; set; }
     
         public virtual ICollection<Show_Info> Show_Info { get; set; }
     }

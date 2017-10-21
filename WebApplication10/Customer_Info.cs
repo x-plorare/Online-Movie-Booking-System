@@ -19,11 +19,12 @@ namespace WebApplication10
             this.Booking_Details = new HashSet<Booking_Details>();
         }
     
-        public string Customer_Id { get; set; }
+        public int Customer_Id { get; set; }
         public string Customer_Name { get; set; }
         public string Customer_Password { get; set; }
-        public int Phone_No { get; set; }
+        public decimal Phone_No { get; set; }
         public string Email { get; set; }
+        public string C_ID { get; set; }
     
         public virtual ICollection<Booking_Details> Booking_Details { get; set; }
     }

@@ -14,7 +14,7 @@ namespace WebApplication10
     
     public partial class Seat_Details
     {
-        public string Ticket_Id { get; set; }
+        public int Ticket_Id { get; set; }
         public string Seat_No { get; set; }
     
         public virtual Booking_Details Booking_Details { get; set; }

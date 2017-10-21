@@ -20,12 +20,13 @@ namespace WebApplication10
             this.Seat_Details = new HashSet<Seat_Details>();
         }
     
-        public string Ticket_Id { get; set; }
-        public string Customer_Id { get; set; }
-        public string Employee_Id { get; set; }
-        public string Show_Id { get; set; }
+        public int Ticket_Id { get; set; }
+        public int Customer_Id { get; set; }
+        public Nullable<int> Employee_Id { get; set; }
+        public int Show_Id { get; set; }
         public int No_Of_Tickets { get; set; }
         public System.DateTime Booking_Date { get; set; }
+        public string TK_ID { get; set; }
     
         public virtual Customer_Info Customer_Info { get; set; }
         public virtual Show_Info Show_Info { get; set; }

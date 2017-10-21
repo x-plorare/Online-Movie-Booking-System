@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Numerics;
 
 namespace WebApplication10
 {
@@ -11,21 +12,18 @@ namespace WebApplication10
     {   
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            //string Theater_Name = Session["Theater_Name"].ToString(); 
-            //string Movie_Name = Session["Movie_Name"].ToString();
-            //var Show_Date = Session["Show_Date"];
-            //var Show_Time = Session["Show_Time"];
-            //var Price = Session["Price"];
-
-            //Response.Write(Theater_Name);
-            //Response.Write(Movie_Name);
-            //Response.Write(Show_Date);
-            //Response.Write(Show_Date);
-            //Response.Write(Price);
-
-            GridViewRow row = (GridViewRow)Session["Booking_Details"];
-            string theater_name = row.Cells[1].Text;    
+            //GridViewRow row = (GridViewRow)Session["Booking_Details"];
+            //int show_id = Int32.Parse(row.Cells[6].Text);
+            //using (projectEntities context = new projectEntities())
+            //{
+            //    Array seatNos = (from s in context.Show_Info
+            //                      join b in context.Booking_Details on show_id equals b.Show_Id
+            //                      join t in context.Seat_Details on b.Ticket_Id equals t.Ticket_Id
+            //                      select new
+            //                      {
+            //                          t.Seat_No
+            //                      }).ToArray();
+            //}    
         }
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {

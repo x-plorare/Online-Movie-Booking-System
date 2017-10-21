@@ -47,11 +47,12 @@ namespace WebApplication10
                                             m1.Movie_Name,
                                             s1.Show_Date,
                                             s1.Start_Time,
-                                            s1.Price
+                                            s1.Price,
+                                            s1.Show_Id
                                         }).ToList();
                 GridView1.AutoGenerateSelectButton = true;
                 GridView1.DataBind();
-
+                
             }
         }
 

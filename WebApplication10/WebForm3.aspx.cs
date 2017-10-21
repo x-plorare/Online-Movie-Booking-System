@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -63,7 +65,37 @@ namespace WebApplication10
 
             Label12.Text = seat;
 
-            Label14.Text = (Price * aLen).ToString(); 
+            Label14.Text = (Price * aLen).ToString();
+            decimal totalPrice = Price * aLen;
         }
+        
+        protected void PayPalBtn_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Booked_Ticket_details.aspx");
+            GridViewRow row = (GridViewRow)Session["Booking_Details"];
+            decimal Price = Decimal.Parse(row.Cells[5].Text);
+            Array seats = (Array)Session["seatNos"];
+            string cmd = "_xclick";
+            string business = "dhelu-seller@gmail.com";
+            string itemName = row.Cells[2].ToString();
+            double itemAmount = Double.Parse(Price.ToString());
+            string currencyCode = "USD";
+            int quantity = seats.Length;
+
+            StringBuilder ppHref = new StringBuilder();
+
+            ppHref.Append("https://www.sandbox.paypal.com/cgi-bin/webscr?");
+            ppHref.Append("cmd=" + cmd);
+            ppHref.Append("&business=" + business);
+            ppHref.Append("&item_name=" + itemName);
+            ppHref.Append("&amount=" + itemAmount.ToString("#.00"));
+            ppHref.Append("&currency_code=" + currencyCode);
+            ppHref.Append("&quantity=" + quantity);
+            ppHref.Append("&return=http://localhost:4257/Booked_Ticket_Details.aspx");
+            ppHref.Append("&cancel_return=http://localhost:4257/Dashboard.aspx");
+
+            Response.Redirect(ppHref.ToString(), true);
+        }
+        
     }
 }

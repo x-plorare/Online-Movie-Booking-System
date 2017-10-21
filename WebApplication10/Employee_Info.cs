@@ -15,7 +15,7 @@ namespace WebApplication10
     public partial class Employee_Info
     {
         public int Employee_Id { get; set; }
-        public string Theater_Id { get; set; }
+        public int Theater_Id { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
         public int Phone_No { get; set; }

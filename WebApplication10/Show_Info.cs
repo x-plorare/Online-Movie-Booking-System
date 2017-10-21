@@ -19,12 +19,13 @@ namespace WebApplication10
             this.Booking_Details = new HashSet<Booking_Details>();
         }
     
-        public string Show_Id { get; set; }
-        public string Theater_Id { get; set; }
-        public string Movie_Id { get; set; }
+        public int Show_Id { get; set; }
+        public int Theater_Id { get; set; }
+        public int Movie_Id { get; set; }
         public System.DateTime Show_Date { get; set; }
         public System.TimeSpan Start_Time { get; set; }
         public decimal Price { get; set; }
+        public string S_ID { get; set; }
     
         public virtual ICollection<Booking_Details> Booking_Details { get; set; }
         public virtual Movie_Info Movie_Info { get; set; }
