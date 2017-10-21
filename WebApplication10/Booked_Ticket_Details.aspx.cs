@@ -88,7 +88,6 @@ namespace WebApplication10
                                              b.Ticket_Id
                                          }).OrderByDescending(t => t.Ticket_Id).FirstOrDefault();
 
-                Response.Write(tk_id.ToString());
                 Payment_Info pay = new Payment_Info();
                 pay.Ticket_Id = tk_id.Ticket_Id;
                 pay.Total_Price = tot_price;
