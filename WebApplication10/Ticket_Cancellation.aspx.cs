@@ -58,14 +58,12 @@ namespace WebApplication10
                                           select b).FirstOrDefault();
                 context.Booking_Details.Remove(ticket);
                 context.SaveChanges();
+
+                Response.Redirect("default.aspx");
             }
 
-            //int categoryID = (int)GridView1.DataKeys[e.RowIndex].Value;
-            //Response.Write(categoryID);
+            
         }
-
-        
-
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
