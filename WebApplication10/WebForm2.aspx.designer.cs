@@ -31,6 +31,15 @@ namespace WebApplication10 {
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
         
         /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
         /// XmlDataSource1 control.
         /// </summary>
         /// <remarks>
@@ -58,15 +67,6 @@ namespace WebApplication10 {
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList2;
         
         /// <summary>
-        /// XmlDataSource2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource2;
-        
-        /// <summary>
         /// CheckBoxList3 control.
         /// </summary>
         /// <remarks>
@@ -76,13 +76,13 @@ namespace WebApplication10 {
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList3;
         
         /// <summary>
-        /// XmlDataSource3 control.
+        /// XmlDataSource2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource3;
+        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource2;
         
         /// <summary>
         /// CheckBoxList4 control.
@@ -94,13 +94,13 @@ namespace WebApplication10 {
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList4;
         
         /// <summary>
-        /// XmlDataSource4 control.
+        /// XmlDataSource3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource4;
+        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource3;
         
         /// <summary>
         /// CheckBoxList5 control.
@@ -112,13 +112,13 @@ namespace WebApplication10 {
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList5;
         
         /// <summary>
-        /// XmlDataSource5 control.
+        /// XmlDataSource4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource5;
+        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource4;
         
         /// <summary>
         /// Button1 control.
@@ -128,6 +128,15 @@ namespace WebApplication10 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// XmlDataSource5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource5;
         
         /// <summary>
         /// Book control.

@@ -67,6 +67,8 @@ namespace WebApplication10
 
             Label14.Text = (Price * aLen).ToString();
             decimal totalPrice = Price * aLen;
+
+            Session["seatStr"] = seat;
         }
         
         protected void PayPalBtn_Click(object sender, ImageClickEventArgs e)
@@ -92,7 +94,7 @@ namespace WebApplication10
             ppHref.Append("&currency_code=" + currencyCode);
             ppHref.Append("&quantity=" + quantity);
             ppHref.Append("&return=http://localhost:4257/Booked_Ticket_Details.aspx");
-            ppHref.Append("&cancel_return=http://localhost:4257/Dashboard.aspx");
+            ppHref.Append("&cancel_return=http://localhost:4257/default.aspx");
 
             Response.Redirect(ppHref.ToString(), true);
         }

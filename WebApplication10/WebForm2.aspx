@@ -24,17 +24,13 @@
                     <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" DataSourceID="XmlDataSource1" DataTextField="Name" DataValueField="Value" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" RepeatDirection="Horizontal">
                     </asp:RadioButtonList>
                 </td>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Show Seats" />
+                </td>
                 <td>&nbsp;</td>
                 <td>
                     <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/Xmls/XMLFile1.xml"></asp:XmlDataSource>
                 </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -52,9 +48,7 @@
                     </asp:CheckBoxList>
                 </td>
                 <td>&nbsp;</td>
-                <td>
-                    <asp:XmlDataSource ID="XmlDataSource2" runat="server" DataFile="~/Xmls/Seats1.xml"></asp:XmlDataSource>
-                </td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -64,7 +58,7 @@
                 </td>
                 <td>&nbsp;</td>
                 <td>
-                    <asp:XmlDataSource ID="XmlDataSource3" runat="server" DataFile="~/Xmls/Seats2.xml"></asp:XmlDataSource>
+                    <asp:XmlDataSource ID="XmlDataSource2" runat="server" DataFile="~/Xmls/Seats1.xml"></asp:XmlDataSource>
                 </td>
             </tr>
             <tr>
@@ -75,7 +69,7 @@
                 </td>
                 <td>&nbsp;</td>
                 <td>
-                    <asp:XmlDataSource ID="XmlDataSource4" runat="server" DataFile="~/Xmls/Seats3.xml"></asp:XmlDataSource>
+                    <asp:XmlDataSource ID="XmlDataSource3" runat="server" DataFile="~/Xmls/Seats2.xml"></asp:XmlDataSource>
                 </td>
             </tr>
             <tr>
@@ -86,15 +80,24 @@
                 </td>
                 <td>&nbsp;</td>
                 <td>
+                    <asp:XmlDataSource ID="XmlDataSource4" runat="server" DataFile="~/Xmls/Seats3.xml"></asp:XmlDataSource>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <asp:Button ID="Button1" runat="server" Enabled="False" OnClick="Button1_Click" Text="Lock" Height="26px" Width="49px" />
+                </td>
+                <td>&nbsp;</td>
+                <td>
                     <asp:XmlDataSource ID="XmlDataSource5" runat="server" DataFile="~/Xmls/Seats4.xml"></asp:XmlDataSource>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Enabled="False" OnClick="Button1_Click" Text="Lock" />
-                </td>
+                    &nbsp;</td>
                 <td>
-                    <asp:Button ID="Book" runat="server" Text="Book" OnClick="Book_Click" />
+                    <asp:Button ID="Book" runat="server" Text="Book" OnClick="Book_Click" Width="47px" />
                 </td>
                 <td>&nbsp;</td>
                 <td>

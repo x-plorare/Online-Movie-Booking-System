@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Booked_Ticket_Details.aspx" />
-    <Content Include="Dashboard.aspx" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -79,6 +78,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="default.aspx" />
+    <Content Include="Ticket_Cancellation.aspx" />
     <Content Include="User-Info\FirstPage.aspx" />
     <Content Include="User-Info\Log-In.aspx" />
     <Content Include="User-Info\Registration.aspx" />
@@ -106,13 +107,6 @@
     </Compile>
     <Compile Include="Customer_Info.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee_Info.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -156,6 +150,20 @@
     </Compile>
     <Compile Include="Theater_Info.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ticket_Cancellation.aspx.cs">
+      <DependentUpon>Ticket_Cancellation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ticket_Cancellation.aspx.designer.cs">
+      <DependentUpon>Ticket_Cancellation.aspx</DependentUpon>
     </Compile>
     <Compile Include="User-Info\FirstPage.aspx.cs">
       <DependentUpon>FirstPage.aspx</DependentUpon>
