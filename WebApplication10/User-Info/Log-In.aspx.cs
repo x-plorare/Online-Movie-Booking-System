@@ -19,22 +19,17 @@ namespace WebApplication10.User_Info
 
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            String str = WebConfigurationManager.ConnectionStrings["online-ticket-databaseConnectionString"].ConnectionString;
-            SqlConnection myconn = new SqlConnection(str);
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = myconn;
-            cmd.CommandText = "Select * from Customer_Info";
-            myconn.Open();
-            SqlDataReader rdr = cmd.ExecuteReader();
-            rdr.Read();
-            if (Login1.UserName == rdr["Customer_Name"].ToString() && Login1.Password == rdr["Customer_Password"].ToString())
+            using (projectEntities context = new projectEntities())
             {
-                Session["Customer_Name"] = Login1.UserName;
+                int customer = Int32.Parse((from c in context.Customer_Info
+                                            where c.Customer_Name == Login1.UserName && c.Customer_Password == Login1.Password
+                                            select c.Customer_Id).FirstOrDefault().ToString());
+
+                Session["Customer_Id"] = customer;
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true);
-                Session.RemoveAll();
+
             }
-            myconn.Close();
         }
     }
 }

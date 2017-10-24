@@ -13,7 +13,10 @@ namespace WebApplication10
     {   
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["Customer_Id"] == null)
+            {
+                Response.Redirect("~/User-Info/Log-In.aspx");
+            }
         }
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {

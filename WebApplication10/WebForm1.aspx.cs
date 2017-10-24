@@ -12,7 +12,10 @@ namespace WebApplication10
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["Customer_Id"] == null)
+            {
+                Response.Redirect("~/User-Info/Log-In.aspx");
+            }
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,7 +44,7 @@ namespace WebApplication10
                 GridView1.DataSource = (from s1 in context.Show_Info
                                         join t1 in context.Theater_Info on DropDownList1.SelectedItem.Text equals t1.Location
                                         join m1 in context.Movie_Info on selectedMovie equals m1.Movie_Name
-                                        where s1.Movie_Id == m1.Movie_Id && s1.Theater_Id == t1.Theater_Id
+                                        where s1.Movie_Id == m1.Movie_Id && s1.Theater_Id == t1.Theater_Id && s1.Show_Date >= DateTime.UtcNow
                                         select new
                                         {
                                             t1.Theater_Name,

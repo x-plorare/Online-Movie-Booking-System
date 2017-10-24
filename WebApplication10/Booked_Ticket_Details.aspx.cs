@@ -17,12 +17,15 @@ namespace WebApplication10
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Customer_Id"] == null)
+            {
+                Response.Redirect("~/User-Info/Log-In.aspx");
+            }
             if (!IsPostBack)
             {
 
                 DateTime todate = DateTime.UtcNow.Date;
-                //int c_id = Int32.Parse(Session["Customer_Id"].ToString());
-                int c_id = 3;
+                int customerId = Int32.Parse(Session["Customer_Id"].ToString());
                 GridViewRow row = (GridViewRow)Session["Booking_Details"];
                 string Theater_Name = row.Cells[1].Text;
                 string Movie_Name = row.Cells[2].Text;
@@ -34,12 +37,11 @@ namespace WebApplication10
                 int aLen = seats.Length;
                 decimal tot_price = aLen * Price;
                 string seatStr = Session["seatStr"].ToString();
-                Response.Write(seatStr);
                 using (projectEntities context = new projectEntities())
                 {
 
                     Booking_Details book = new Booking_Details();
-                    book.Customer_Id = c_id;
+                    book.Customer_Id = customerId;
                     book.Show_Id = show_id;
                     book.No_Of_Tickets = aLen;
                     book.Booking_Date = todate;
@@ -50,7 +52,7 @@ namespace WebApplication10
 
                     var tk_id = (from t in context.Show_Info
                                  join b in context.Booking_Details on show_id equals b.Show_Id
-                                 join c in context.Customer_Info on c_id equals c.Customer_Id
+                                 join c in context.Customer_Info on customerId equals c.Customer_Id
                                  where b.Booking_Date == DbFunctions.TruncateTime(DateTime.UtcNow)
                                  select new
                                  {

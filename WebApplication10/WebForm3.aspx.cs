@@ -13,6 +13,11 @@ namespace WebApplication10
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Customer_Id"] == null)
+            {
+                Response.Redirect("~/User-Info/Log-In.aspx");
+            }
+
             string s1,s2,s3,s4,s5,seat;
             GridViewRow row = (GridViewRow)Session["Booking_Details"];
             string Theater_name = row.Cells[1].Text;

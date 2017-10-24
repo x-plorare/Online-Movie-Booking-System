@@ -13,13 +13,22 @@ namespace WebApplication10.User_Info
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Session["Customer_Id"] == null)
+            {
+                Response.Redirect("~/User-Info/Log-In.aspx");
+            }
+            //string userName = User.Identity.Name;
+            //using(projectEntities context = new projectEntities()){
+            //    var customer_id = (from c in context.Customer_Info
+            //                       where c.Customer_Name == userName && c.Customer_Password == passWord
+            //                       select c.Customer_Id).FirstOrDefault();
         }
 
         protected void Signout_Click(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
             Response.Write("Successfully logged out");
-            Response.Redirect("Login.aspx");
+            Response.Redirect("~/User-Info/Log-In.aspx");
         }
 
 
