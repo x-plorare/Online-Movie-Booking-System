@@ -13,15 +13,5 @@ namespace WebApplication10.User_Info
         {
 
         }
-
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            //Response.Write();
-        }
-
-        protected void LinkButton2_Click(object sender, EventArgs e)
-        {
-            //Response.Write();
-        }
     }
 }

@@ -14,13 +14,23 @@ namespace WebApplication10
     
     public partial class Employee_Info
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee_Info()
+        {
+            this.Show_Info = new HashSet<Show_Info>();
+        }
+    
         public int Employee_Id { get; set; }
+        public string E_ID { get; set; }
         public int Theater_Id { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public int Phone_No { get; set; }
+        public long Phone_No { get; set; }
         public string Address { get; set; }
+        public string Employee_Name { get; set; }
     
         public virtual Theater_Info Theater_Info { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Show_Info> Show_Info { get; set; }
     }
 }

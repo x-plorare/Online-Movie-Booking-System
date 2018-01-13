@@ -17,7 +17,7 @@ namespace WebApplication10.User_Info
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            using (projectEntities context = new projectEntities())
+            using (projectEntities1 context = new projectEntities1())
             {
                 Customer_Info _insert = new Customer_Info();
                 _insert.Customer_Name = TextBox1.Text;
@@ -28,6 +28,11 @@ namespace WebApplication10.User_Info
                 context.SaveChanges();
             }
             Response.Redirect("Log-In.aspx");
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("facebookLogin.aspx");
         }
     }
 }

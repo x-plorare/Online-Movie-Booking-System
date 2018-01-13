@@ -1,0 +1,70 @@
+﻿@model IEnumerable<adminWebApplication.Show_Info>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.S_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Show_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Start_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie_Info.M_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Theater_Info.T_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_Info.E_ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Show_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie_Info.M_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Theater_Info.T_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_Info.E_ID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Show_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Show_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Show_Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -19,17 +19,30 @@ namespace WebApplication10.User_Info
 
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
-
-            using (projectEntities context = new projectEntities())
+            using (projectEntities1 context = new projectEntities1())
             {
-                int customer = Int32.Parse((from c in context.Customer_Info
+                
+                int customer = int.Parse((from c in context.Customer_Info
                                             where c.Customer_Name == Login1.UserName && c.Customer_Password == Login1.Password
                                             select c.Customer_Id).FirstOrDefault().ToString());
 
-                Session["Customer_Id"] = customer;
-                FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true);
-
+                if (customer > 0)
+                {
+                    Session["Customer_Id"] = customer;
+                    //Login1.DestinationPageUrl = "~/default.aspx";
+                    FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true);
+                }
             }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("forgetPassword.aspx");
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("facebookLogin.aspx");
         }
     }
 }

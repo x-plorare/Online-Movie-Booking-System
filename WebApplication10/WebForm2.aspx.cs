@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Numerics;
 using System.Collections;
+using System.Web.Security;
 
 namespace WebApplication10
 {
@@ -25,7 +26,7 @@ namespace WebApplication10
             string theater_name = row.Cells[1].Text;
             
             
-            using(projectEntities context = new projectEntities()){
+            using(projectEntities1 context = new projectEntities1()){
                 int noOfSeats = Int32.Parse(Session["noOfSeats"].ToString());
                 
                     switch (noOfSeats)
@@ -122,7 +123,7 @@ namespace WebApplication10
             GridViewRow row = (GridViewRow)Session["Booking_Details"];
             //int show_id = Int32.Parse(row.Cells[6].Text);
             string theater_name = row.Cells[1].Text;
-            using (projectEntities context = new projectEntities())
+            using (projectEntities1 context = new projectEntities1())
             {
                 //int noOfSeats = (from t in context.Theater_Info
                 //                 where t.Theater_Name == theater_name
@@ -271,6 +272,11 @@ namespace WebApplication10
             Response.Redirect("WebForm3.aspx");
         }
 
-        
+        public void Signout_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Write("Successfully logged out");
+            Response.Redirect("~/User-Info/Log-In.aspx");
+        }
     }
 }

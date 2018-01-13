@@ -14,18 +14,20 @@ namespace WebApplication10
     
     public partial class Customer_Info
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer_Info()
         {
             this.Booking_Details = new HashSet<Booking_Details>();
         }
     
         public int Customer_Id { get; set; }
+        public string C_ID { get; set; }
         public string Customer_Name { get; set; }
         public string Customer_Password { get; set; }
         public decimal Phone_No { get; set; }
         public string Email { get; set; }
-        public string C_ID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking_Details> Booking_Details { get; set; }
     }
 }

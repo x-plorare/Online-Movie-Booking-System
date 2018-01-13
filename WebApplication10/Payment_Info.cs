@@ -15,6 +15,7 @@ namespace WebApplication10
     public partial class Payment_Info
     {
         public int Payment_Id { get; set; }
+        public string P_ID { get; set; }
         public int Ticket_Id { get; set; }
         public decimal Total_Price { get; set; }
         public string Mode { get; set; }

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<adminWebApplication.Movie_Info>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.M_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie_Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie_Rating)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.M_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie_Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie_Rating)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Movie_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Movie_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Movie_Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -14,17 +14,19 @@ namespace WebApplication10
     
     public partial class Movie_Info
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Movie_Info()
         {
             this.Show_Info = new HashSet<Show_Info>();
         }
     
         public int Movie_Id { get; set; }
+        public string M_ID { get; set; }
         public string Movie_Name { get; set; }
         public string Movie_Description { get; set; }
         public Nullable<double> Movie_Rating { get; set; }
-        public string M_ID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Show_Info> Show_Info { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace WebApplication10
     
     public partial class Theater_Info
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Theater_Info()
         {
             this.Employee_Info = new HashSet<Employee_Info>();
@@ -21,12 +22,14 @@ namespace WebApplication10
         }
     
         public int Theater_Id { get; set; }
+        public string T_ID { get; set; }
         public string Theater_Name { get; set; }
         public int Capacity { get; set; }
         public string Location { get; set; }
-        public string T_ID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee_Info> Employee_Info { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Show_Info> Show_Info { get; set; }
     }
 }

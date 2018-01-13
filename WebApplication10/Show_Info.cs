@@ -14,21 +14,25 @@ namespace WebApplication10
     
     public partial class Show_Info
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Show_Info()
         {
             this.Booking_Details = new HashSet<Booking_Details>();
         }
     
         public int Show_Id { get; set; }
+        public string S_ID { get; set; }
         public int Theater_Id { get; set; }
         public int Movie_Id { get; set; }
         public System.DateTime Show_Date { get; set; }
         public System.TimeSpan Start_Time { get; set; }
         public decimal Price { get; set; }
-        public string S_ID { get; set; }
+        public int Employee_Id { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking_Details> Booking_Details { get; set; }
         public virtual Movie_Info Movie_Info { get; set; }
         public virtual Theater_Info Theater_Info { get; set; }
+        public virtual Employee_Info Employee_Info { get; set; }
     }
 }

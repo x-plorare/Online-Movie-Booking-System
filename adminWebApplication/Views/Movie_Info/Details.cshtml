@@ -1,0 +1,51 @@
+﻿@model adminWebApplication.Movie_Info
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie_Info</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.M_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.M_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movie_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movie_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie_Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movie_Rating)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Movie_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

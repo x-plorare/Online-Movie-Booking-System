@@ -5,21 +5,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link type="text/css" href="~/content/materialize/css/materialize.min.css" rel="stylesheet" media="screen,projection" />
+    
     <title></title>
 </head>
 <body>
     <nav>
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
+        <div class="nav-wrapper black">
+            <a href="#!" class="brand-logo"><img src="../images/logo.jpg" width="64"  /></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
+                <li><a href="default.aspx">Dashboard</a></li>
+                <li><a href="Profile.aspx">Profile</a></li>
+                <li><a href="Booked_Tickets.aspx">Tickets</a></li>
+                <li><a href="Webform1.aspx">Book Ticket</a></li>
+                <li><a href="Ticket_Cancellation.aspx">Cancel Ticket</a></li>
+                <li>
+                    <input type="button" runat="server" onserverclick="Signout_Click" value="Sign Out" /></li>
             </ul>
         </div>
     </nav>
     <form id="form1" runat="server">
-        <div>
+        <%--<div>
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style4">
@@ -32,12 +37,7 @@
                     <td class="auto-style5">
                         <asp:Button ID="Button5" runat="server" Text="Profile" OnClick="Button5_Click" />
                     </td>
-                    <td class="auto-style6">
-                        <asp:Button ID="Button2" OnClick="Signout_Click"
-                            Text="Sign Out" runat="server" />
 
-
-                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
@@ -95,54 +95,79 @@
                 <td class="auto-style7" id="Table9">
                     <asp:Button ID="Button4" runat="server" Text="Cancel" />
                 </td>
-            </tr>
+            </tr>--%>
+        <table>
             <tr>
-                <td class="auto-style10" id="Table10">&nbsp;</td>
-                <td id="Table11" class="auto-style12">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style10" id="Table12">&nbsp;</td>
-                <td id="Table13" class="auto-style12">
-                    <asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Book Movie" />
+                <td>
+                    <div class="row">
+                        <div class="col s12 m7">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/thor.jpg" width="50" height="600" />
+                                    <span class="card-title">Thor: Ragnarok</span>
+                                </div>
+                                <div class="card-content">
+                                    <p>
+                                       Imprisoned on the other side of the universe, the mighty Thor finds himself in a deadly gladiatorial contest that pits him against the Hulk, his former ally and fellow Avenger. Thor's quest for survival leads him in a race against time to prevent the all-powerful Hela from destroying his home world and the Asgardian civilization. 
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="WebForm1.aspx">Book Ticket</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
-            </tr>
-            <tr>
-                <td class="auto-style10" id="Table14">&nbsp;</td>
-                <td id="Table15" class="auto-style12">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style10" id="Table16">&nbsp;</td>
-                <td id="Table17" class="auto-style12">
-                    <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Cancel Ticket" />
+                <td>
+                    <div class="row">
+                        <div class="col s12 m7">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/jl.jpg" width="50" height="600" />
+                                    <span class="card-title">Justice Leauge</span>
+                                </div>
+                                <div class="card-content">
+                                    <p>
+                                        Fueled by his restored faith in humanity and inspired by Superman's selfless act, Bruce Wayne enlists newfound ally Diana Prince to face an even greater threat. Together, Batman and Wonder Woman work quickly to recruit a team to stand against this newly awakened enemy. Despite the formation of an unprecedented league of heroes -- Batman, Wonder Woman, Aquaman, Cyborg and the Flash -- it may be too late to save the planet from an assault of catastrophic proportions.
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="WebForm1.aspx">Book Ticket</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </table>
     </form>
-    <footer class="page-footer">
-          <div class="container">
+    <footer class="page-footer black">
+        <div class="container">
             <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
+                <div class="col l6 s12">
+                    <h5 class="white-text">Let's Book</h5>
+                    <p class="grey-text text-lighten-4">Book Your Favorite Show & Watch with Your Loved One.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a href="default.aspx">Dashboard</a></li>
+                        <li><a class="grey-text text-lighten-3" href="Profile.aspx">Profile</a></li>
+                        <li><a class="grey-text text-lighten-3" href="Booked_Tickets.aspx">Tickets</a></li>
+                        <li><a class="grey-text text-lighten-3" href="WebForm1.aspx">Book Ticket</a></li>
+                        <li><a class="grey-text text-lighten-3" href="Ticket_Cancellation.aspx">Cancel Ticket</a></li>
+                        
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div class="footer-copyright">
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-            © 2014 Copyright Text
+                © 2017 Copyright Text
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
-          </div>
-        </footer>
-    <script src="~/Scripts/materialize/materialize.js" type="text/javascript"></script>
+        </div>
+    </footer>
+    <script src="content/materialize/materialize.js" type="text/javascript"></script>
 </body>
 </html>

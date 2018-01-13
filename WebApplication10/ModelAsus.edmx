@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelAsus.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Booking_Details">
+          <Key>
+            <PropertyRef Name="Ticket_Id" />
+          </Key>
+          <Property Name="Ticket_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TK_ID" Type="varchar" MaxLength="8" StoreGeneratedPattern="Computed" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="Employee_Id" Type="int" />
+          <Property Name="Show_Id" Type="int" Nullable="false" />
+          <Property Name="No_Of_Tickets" Type="int" Nullable="false" />
+          <Property Name="Booking_Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer_Info">
+          <Key>
+            <PropertyRef Name="Customer_Id" />
+          </Key>
+          <Property Name="Customer_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_ID" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Customer_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone_No" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee_Info">
+          <Key>
+            <PropertyRef Name="Employee_Id" />
+          </Key>
+          <Property Name="Employee_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="E_ID" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="Employee_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Theater_Id" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone_No" Type="bigint" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movie_Info">
+          <Key>
+            <PropertyRef Name="Movie_Id" />
+          </Key>
+          <Property Name="Movie_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="M_ID" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="Movie_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Movie_Description" Type="nvarchar(max)" />
+          <Property Name="Movie_Rating" Type="float" />
+        </EntityType>
+        <EntityType Name="Payment_Info">
+          <Key>
+            <PropertyRef Name="Payment_Id" />
+          </Key>
+          <Property Name="Payment_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="P_ID" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="Ticket_Id" Type="int" Nullable="false" />
+          <Property Name="Total_Price" Type="money" Nullable="false" />
+          <Property Name="Mode" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seat_Details">
+          <Key>
+            <PropertyRef Name="Ticket_Id" />
+            <PropertyRef Name="Seat_No" />
+          </Key>
+          <Property Name="Ticket_Id" Type="int" Nullable="false" />
+          <Property Name="Seat_No" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Show_Info">
+          <Key>
+            <PropertyRef Name="Show_Id" />
+          </Key>
+          <Property Name="Show_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_ID" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="Theater_Id" Type="int" Nullable="false" />
+          <Property Name="Movie_Id" Type="int" Nullable="false" />
+          <Property Name="Employee_Id" Type="int" Nullable="false" />
+          <Property Name="Show_Date" Type="date" Nullable="false" />
+          <Property Name="Start_Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Theater_Info">
+          <Key>
+            <PropertyRef Name="Theater_Id" />
+          </Key>
+          <Property Name="Theater_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="T_ID" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="Theater_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Booking_Details_Customer_Id">
+          <End Role="Customer_Info" Type="Self.Customer_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Info">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Booking_Details">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_Details_Show_Id">
+          <End Role="Show_Info" Type="Self.Show_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show_Info">
+              <PropertyRef Name="Show_Id" />
+            </Principal>
+            <Dependent Role="Booking_Details">
+              <PropertyRef Name="Show_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_Details_Ticket_Id">
+          <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment_Info" Type="Self.Payment_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Details">
+              <PropertyRef Name="Ticket_Id" />
+            </Principal>
+            <Dependent Role="Payment_Info">
+              <PropertyRef Name="Ticket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_Details_Ticket_No">
+          <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Seat_Details" Type="Self.Seat_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Details">
+              <PropertyRef Name="Ticket_Id" />
+            </Principal>
+            <Dependent Role="Seat_Details">
+              <PropertyRef Name="Ticket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Info_Theater_Id">
+          <End Role="Theater_Info" Type="Self.Theater_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee_Info" Type="Self.Employee_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theater_Info">
+              <PropertyRef Name="Theater_Id" />
+            </Principal>
+            <Dependent Role="Employee_Info">
+              <PropertyRef Name="Theater_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movie_Info_Movie_Id">
+          <End Role="Movie_Info" Type="Self.Movie_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Show_Info" Type="Self.Show_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_Info">
+              <PropertyRef Name="Movie_Id" />
+            </Principal>
+            <Dependent Role="Show_Info">
+              <PropertyRef Name="Movie_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Show_Id_Theater_Id">
+          <End Role="Theater_Info" Type="Self.Theater_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Show_Info" Type="Self.Show_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theater_Info">
+              <PropertyRef Name="Theater_Id" />
+            </Principal>
+            <Dependent Role="Show_Info">
+              <PropertyRef Name="Theater_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Show_Info_Employee_Id">
+          <End Role="Employee_Info" Type="Self.Employee_Info" Multiplicity="1" />
+          <End Role="Show_Info" Type="Self.Show_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Info">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Show_Info">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelAsusStoreContainer">
+          <EntitySet Name="Booking_Details" EntityType="Self.Booking_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_Info" EntityType="Self.Customer_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Info" EntityType="Self.Employee_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movie_Info" EntityType="Self.Movie_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment_Info" EntityType="Self.Payment_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seat_Details" EntityType="Self.Seat_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Show_Info" EntityType="Self.Show_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Theater_Info" EntityType="Self.Theater_Info" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Booking_Details_Customer_Id" Association="Self.FK_Booking_Details_Customer_Id">
+            <End Role="Customer_Info" EntitySet="Customer_Info" />
+            <End Role="Booking_Details" EntitySet="Booking_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_Details_Show_Id" Association="Self.FK_Booking_Details_Show_Id">
+            <End Role="Show_Info" EntitySet="Show_Info" />
+            <End Role="Booking_Details" EntitySet="Booking_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_Details_Ticket_Id" Association="Self.FK_Booking_Details_Ticket_Id">
+            <End Role="Booking_Details" EntitySet="Booking_Details" />
+            <End Role="Payment_Info" EntitySet="Payment_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_Details_Ticket_No" Association="Self.FK_Booking_Details_Ticket_No">
+            <End Role="Booking_Details" EntitySet="Booking_Details" />
+            <End Role="Seat_Details" EntitySet="Seat_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Info_Theater_Id" Association="Self.FK_Employee_Info_Theater_Id">
+            <End Role="Theater_Info" EntitySet="Theater_Info" />
+            <End Role="Employee_Info" EntitySet="Employee_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movie_Info_Movie_Id" Association="Self.FK_Movie_Info_Movie_Id">
+            <End Role="Movie_Info" EntitySet="Movie_Info" />
+            <End Role="Show_Info" EntitySet="Show_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Show_Id_Theater_Id" Association="Self.FK_Show_Id_Theater_Id">
+            <End Role="Theater_Info" EntitySet="Theater_Info" />
+            <End Role="Show_Info" EntitySet="Show_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Show_Info_Employee_Id" Association="Self.FK_Show_Info_Employee_Id">
+            <End Role="Employee_Info" EntitySet="Employee_Info" />
+            <End Role="Show_Info" EntitySet="Show_Info" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelAsus" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Booking_Details">
+          <Key>
+            <PropertyRef Name="Ticket_Id" />
+          </Key>
+          <Property Name="Ticket_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TK_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="Employee_Id" Type="Int32" />
+          <Property Name="Show_Id" Type="Int32" Nullable="false" />
+          <Property Name="No_Of_Tickets" Type="Int32" Nullable="false" />
+          <Property Name="Booking_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Customer_Info" Relationship="Self.FK_Booking_Details_Customer_Id" FromRole="Booking_Details" ToRole="Customer_Info" />
+          <NavigationProperty Name="Show_Info" Relationship="Self.FK_Booking_Details_Show_Id" FromRole="Booking_Details" ToRole="Show_Info" />
+          <NavigationProperty Name="Payment_Info" Relationship="Self.FK_Booking_Details_Ticket_Id" FromRole="Booking_Details" ToRole="Payment_Info" />
+          <NavigationProperty Name="Seat_Details" Relationship="Self.FK_Booking_Details_Ticket_No" FromRole="Booking_Details" ToRole="Seat_Details" />
+        </EntityType>
+        <EntityType Name="Customer_Info">
+          <Key>
+            <PropertyRef Name="Customer_Id" />
+          </Key>
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_ID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Customer_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone_No" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Details_Customer_Id" FromRole="Customer_Info" ToRole="Booking_Details" />
+        </EntityType>
+        <EntityType Name="Employee_Info">
+          <Key>
+            <PropertyRef Name="Employee_Id" />
+          </Key>
+          <Property Name="Employee_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="E_ID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Theater_Id" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone_No" Type="Int64" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Theater_Info" Relationship="Self.FK_Employee_Info_Theater_Id" FromRole="Employee_Info" ToRole="Theater_Info" />
+          <Property Name="Employee_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Show_Info" Relationship="ModelAsus.FK_Show_Info_Employee_Id" FromRole="Employee_Info" ToRole="Show_Info" />
+        </EntityType>
+        <EntityType Name="Movie_Info">
+          <Key>
+            <PropertyRef Name="Movie_Id" />
+          </Key>
+          <Property Name="Movie_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="M_ID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Movie_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Movie_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Movie_Rating" Type="Double" />
+          <NavigationProperty Name="Show_Info" Relationship="Self.FK_Movie_Info_Movie_Id" FromRole="Movie_Info" ToRole="Show_Info" />
+        </EntityType>
+        <EntityType Name="Payment_Info">
+          <Key>
+            <PropertyRef Name="Payment_Id" />
+          </Key>
+          <Property Name="Payment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="P_ID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Ticket_Id" Type="Int32" Nullable="false" />
+          <Property Name="Total_Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Mode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Details_Ticket_Id" FromRole="Payment_Info" ToRole="Booking_Details" />
+        </EntityType>
+        <EntityType Name="Seat_Details">
+          <Key>
+            <PropertyRef Name="Ticket_Id" />
+            <PropertyRef Name="Seat_No" />
+          </Key>
+          <Property Name="Ticket_Id" Type="Int32" Nullable="false" />
+          <Property Name="Seat_No" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Details_Ticket_No" FromRole="Seat_Details" ToRole="Booking_Details" />
+        </EntityType>
+        <EntityType Name="Show_Info">
+          <Key>
+            <PropertyRef Name="Show_Id" />
+          </Key>
+          <Property Name="Show_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_ID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Theater_Id" Type="Int32" Nullable="false" />
+          <Property Name="Movie_Id" Type="Int32" Nullable="false" />
+          <Property Name="Show_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Start_Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Details_Show_Id" FromRole="Show_Info" ToRole="Booking_Details" />
+          <NavigationProperty Name="Movie_Info" Relationship="Self.FK_Movie_Info_Movie_Id" FromRole="Show_Info" ToRole="Movie_Info" />
+          <NavigationProperty Name="Theater_Info" Relationship="Self.FK_Show_Id_Theater_Id" FromRole="Show_Info" ToRole="Theater_Info" />
+          <Property Name="Employee_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee_Info" Relationship="ModelAsus.FK_Show_Info_Employee_Id" FromRole="Show_Info" ToRole="Employee_Info" />
+        </EntityType>
+        <EntityType Name="Theater_Info">
+          <Key>
+            <PropertyRef Name="Theater_Id" />
+          </Key>
+          <Property Name="Theater_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="T_ID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Theater_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employee_Info" Relationship="Self.FK_Employee_Info_Theater_Id" FromRole="Theater_Info" ToRole="Employee_Info" />
+          <NavigationProperty Name="Show_Info" Relationship="Self.FK_Show_Id_Theater_Id" FromRole="Theater_Info" ToRole="Show_Info" />
+        </EntityType>
+        <Association Name="FK_Booking_Details_Customer_Id">
+          <End Role="Customer_Info" Type="Self.Customer_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Info">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Booking_Details">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_Details_Show_Id">
+          <End Role="Show_Info" Type="Self.Show_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show_Info">
+              <PropertyRef Name="Show_Id" />
+            </Principal>
+            <Dependent Role="Booking_Details">
+              <PropertyRef Name="Show_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_Details_Ticket_Id">
+          <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment_Info" Type="Self.Payment_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Details">
+              <PropertyRef Name="Ticket_Id" />
+            </Principal>
+            <Dependent Role="Payment_Info">
+              <PropertyRef Name="Ticket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_Details_Ticket_No">
+          <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="1" />
+          <End Role="Seat_Details" Type="Self.Seat_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Details">
+              <PropertyRef Name="Ticket_Id" />
+            </Principal>
+            <Dependent Role="Seat_Details">
+              <PropertyRef Name="Ticket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Info_Theater_Id">
+          <End Role="Theater_Info" Type="Self.Theater_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee_Info" Type="Self.Employee_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theater_Info">
+              <PropertyRef Name="Theater_Id" />
+            </Principal>
+            <Dependent Role="Employee_Info">
+              <PropertyRef Name="Theater_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movie_Info_Movie_Id">
+          <End Role="Movie_Info" Type="Self.Movie_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Show_Info" Type="Self.Show_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_Info">
+              <PropertyRef Name="Movie_Id" />
+            </Principal>
+            <Dependent Role="Show_Info">
+              <PropertyRef Name="Movie_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Show_Id_Theater_Id">
+          <End Role="Theater_Info" Type="Self.Theater_Info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Show_Info" Type="Self.Show_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theater_Info">
+              <PropertyRef Name="Theater_Id" />
+            </Principal>
+            <Dependent Role="Show_Info">
+              <PropertyRef Name="Theater_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projectEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Booking_Details" EntityType="Self.Booking_Details" />
+          <EntitySet Name="Customer_Info" EntityType="Self.Customer_Info" />
+          <EntitySet Name="Employee_Info" EntityType="Self.Employee_Info" />
+          <EntitySet Name="Movie_Info" EntityType="Self.Movie_Info" />
+          <EntitySet Name="Payment_Info" EntityType="Self.Payment_Info" />
+          <EntitySet Name="Seat_Details" EntityType="Self.Seat_Details" />
+          <EntitySet Name="Show_Info" EntityType="Self.Show_Info" />
+          <EntitySet Name="Theater_Info" EntityType="Self.Theater_Info" />
+          <AssociationSet Name="FK_Booking_Details_Customer_Id" Association="Self.FK_Booking_Details_Customer_Id">
+            <End Role="Customer_Info" EntitySet="Customer_Info" />
+            <End Role="Booking_Details" EntitySet="Booking_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_Details_Show_Id" Association="Self.FK_Booking_Details_Show_Id">
+            <End Role="Show_Info" EntitySet="Show_Info" />
+            <End Role="Booking_Details" EntitySet="Booking_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_Details_Ticket_Id" Association="Self.FK_Booking_Details_Ticket_Id">
+            <End Role="Booking_Details" EntitySet="Booking_Details" />
+            <End Role="Payment_Info" EntitySet="Payment_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_Details_Ticket_No" Association="Self.FK_Booking_Details_Ticket_No">
+            <End Role="Booking_Details" EntitySet="Booking_Details" />
+            <End Role="Seat_Details" EntitySet="Seat_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Info_Theater_Id" Association="Self.FK_Employee_Info_Theater_Id">
+            <End Role="Theater_Info" EntitySet="Theater_Info" />
+            <End Role="Employee_Info" EntitySet="Employee_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movie_Info_Movie_Id" Association="Self.FK_Movie_Info_Movie_Id">
+            <End Role="Movie_Info" EntitySet="Movie_Info" />
+            <End Role="Show_Info" EntitySet="Show_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Show_Id_Theater_Id" Association="Self.FK_Show_Id_Theater_Id">
+            <End Role="Theater_Info" EntitySet="Theater_Info" />
+            <End Role="Show_Info" EntitySet="Show_Info" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="ModelAsus.sysdiagram" />
+          <AssociationSet Name="FK_Show_Info_Employee_Id" Association="ModelAsus.FK_Show_Info_Employee_Id">
+            <End Role="Employee_Info" EntitySet="Employee_Info" />
+            <End Role="Show_Info" EntitySet="Show_Info" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Show_Info_Employee_Id">
+          <End Type="ModelAsus.Employee_Info" Role="Employee_Info" Multiplicity="1" />
+          <End Type="ModelAsus.Show_Info" Role="Show_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Info">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Show_Info">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelAsusStoreContainer" CdmEntityContainer="projectEntities1">
+          <EntitySetMapping Name="Booking_Details">
+            <EntityTypeMapping TypeName="ModelAsus.Booking_Details">
+              <MappingFragment StoreEntitySet="Booking_Details">
+                <ScalarProperty Name="Ticket_Id" ColumnName="Ticket_Id" />
+                <ScalarProperty Name="TK_ID" ColumnName="TK_ID" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="Show_Id" ColumnName="Show_Id" />
+                <ScalarProperty Name="No_Of_Tickets" ColumnName="No_Of_Tickets" />
+                <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Info">
+            <EntityTypeMapping TypeName="ModelAsus.Customer_Info">
+              <MappingFragment StoreEntitySet="Customer_Info">
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Customer_Password" ColumnName="Customer_Password" />
+                <ScalarProperty Name="Phone_No" ColumnName="Phone_No" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Info">
+            <EntityTypeMapping TypeName="ModelAsus.Employee_Info">
+              <MappingFragment StoreEntitySet="Employee_Info">
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="E_ID" ColumnName="E_ID" />
+                <ScalarProperty Name="Theater_Id" ColumnName="Theater_Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_No" ColumnName="Phone_No" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movie_Info">
+            <EntityTypeMapping TypeName="ModelAsus.Movie_Info">
+              <MappingFragment StoreEntitySet="Movie_Info">
+                <ScalarProperty Name="Movie_Id" ColumnName="Movie_Id" />
+                <ScalarProperty Name="M_ID" ColumnName="M_ID" />
+                <ScalarProperty Name="Movie_Name" ColumnName="Movie_Name" />
+                <ScalarProperty Name="Movie_Description" ColumnName="Movie_Description" />
+                <ScalarProperty Name="Movie_Rating" ColumnName="Movie_Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment_Info">
+            <EntityTypeMapping TypeName="ModelAsus.Payment_Info">
+              <MappingFragment StoreEntitySet="Payment_Info">
+                <ScalarProperty Name="Payment_Id" ColumnName="Payment_Id" />
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="Ticket_Id" ColumnName="Ticket_Id" />
+                <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seat_Details">
+            <EntityTypeMapping TypeName="ModelAsus.Seat_Details">
+              <MappingFragment StoreEntitySet="Seat_Details">
+                <ScalarProperty Name="Ticket_Id" ColumnName="Ticket_Id" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Show_Info">
+            <EntityTypeMapping TypeName="ModelAsus.Show_Info">
+              <MappingFragment StoreEntitySet="Show_Info">
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="Show_Id" ColumnName="Show_Id" />
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="Theater_Id" ColumnName="Theater_Id" />
+                <ScalarProperty Name="Movie_Id" ColumnName="Movie_Id" />
+                <ScalarProperty Name="Show_Date" ColumnName="Show_Date" />
+                <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Theater_Info">
+            <EntityTypeMapping TypeName="ModelAsus.Theater_Info">
+              <MappingFragment StoreEntitySet="Theater_Info">
+                <ScalarProperty Name="Theater_Id" ColumnName="Theater_Id" />
+                <ScalarProperty Name="T_ID" ColumnName="T_ID" />
+                <ScalarProperty Name="Theater_Name" ColumnName="Theater_Name" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ModelAsus.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

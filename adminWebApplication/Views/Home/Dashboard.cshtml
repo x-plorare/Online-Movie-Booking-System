@@ -1,0 +1,17 @@
+﻿@model adminWebApplication.Employee_Info
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Dashboard</h2>
+<div>
+    <section>
+        <a href="/Theater_Info/Index" target="_self">Theater</a><br />
+        <a href="/Show_Info/Index" target="_self">Show</a><br />
+        <a href="/Movie_Info/Index" target="_self">Movie</a><br />
+        @*<a href="/Employee_Info/Index" target="_self">Employee</a>*@
+        <a>@Html.ActionLink("Employee", "Employee", "Home")</a><br/>
+    </section>
+</div>

@@ -1,0 +1,51 @@
+﻿@model adminWebApplication.Theater_Info
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Theater_Info</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.T_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.T_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Theater_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Theater_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Theater_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

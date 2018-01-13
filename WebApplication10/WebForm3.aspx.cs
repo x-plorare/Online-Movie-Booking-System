@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -78,7 +79,7 @@ namespace WebApplication10
         
         protected void PayPalBtn_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("Booked_Ticket_details.aspx");
+            
             GridViewRow row = (GridViewRow)Session["Booking_Details"];
             decimal Price = Decimal.Parse(row.Cells[5].Text);
             Array seats = (Array)Session["seatNos"];
@@ -103,6 +104,13 @@ namespace WebApplication10
 
             Response.Redirect(ppHref.ToString(), true);
         }
-        
+
+        public void Signout_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Write("Successfully logged out");
+            Response.Redirect("~/User-Info/Log-In.aspx");
+        }
+
     }
 }

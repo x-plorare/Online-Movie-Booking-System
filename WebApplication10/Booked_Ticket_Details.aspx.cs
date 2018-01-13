@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Office.Interop.Outlook;
+using System;
 using System.Data.Entity;
-//using System.Data.Entity.Core.Objects;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Validation;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI;
+using System.Net.Mail;
+using System.Web.Security;
 using System.Web.UI.WebControls;
 
 namespace WebApplication10
@@ -23,7 +18,6 @@ namespace WebApplication10
             }
             if (!IsPostBack)
             {
-
                 DateTime todate = DateTime.UtcNow.Date;
                 int customerId = Int32.Parse(Session["Customer_Id"].ToString());
                 GridViewRow row = (GridViewRow)Session["Booking_Details"];
@@ -37,7 +31,7 @@ namespace WebApplication10
                 int aLen = seats.Length;
                 decimal tot_price = aLen * Price;
                 string seatStr = Session["seatStr"].ToString();
-                using (projectEntities context = new projectEntities())
+                using (projectEntities1 context = new projectEntities1())
                 {
 
                     Booking_Details book = new Booking_Details();
@@ -71,17 +65,24 @@ namespace WebApplication10
                     context.Payment_Info.Add(pay);
                     context.SaveChanges();
 
+                    var user = (from c in context.Customer_Info
+                                where c.Customer_Id == customerId
+                                select c).FirstOrDefault();
 
-                    //var t_id = (from s in context.Show_Info
-                    //             join b in context.Booking_Details on show_id equals b.Show_Id
-                    //             join c in context.Customer_Info on c_id equals c.Customer_Id
-                    //             join t in context.Seat_Details on b.Ticket_Id equals t.Ticket_Id
-                    //             where b.Booking_Date == DbFunctions.TruncateTime(DateTime.UtcNow)
-                    //             select new
-                    //             {
-                    //                 b.Ticket_Id
-                    //             }).OrderByDescending(t => t.Ticket_Id).FirstOrDefault();
+                    Application OutlookApplication = new Application();
 
+
+                    MailItem message = (MailItem)OutlookApplication.CreateItem(OlItemType.olMailItem);
+
+                    MailAddress toAddress = new MailAddress(user.Email);
+
+
+                    message.To = toAddress.ToString();
+                    message.Subject = "Movie Ticket";
+                    message.HTMLBody ="<h1>THANK YOU for using Let's book</h1>" + "<br/><br/>" + "Theater Name:" + "<br/><br/>" + Theater_Name + "Movie:" + Movie_Name + "<br/><br/>" + "Show Date:" + Show_Date + "<br/><br/>" + "Show Time:" + Show_Time + "<br/><br/>" + "No of Tickets:" + aLen.ToString() + "<br/><br/>" + "Seat Numbers:" + seatStr + "<br/><br/>" + "Price" + Price + "<br/><br/>" + "Enjoy your show";
+                    message.BodyFormat = OlBodyFormat.olFormatHTML;
+
+                    message.Send();
                 }
 
                 Label9.Text = Theater_Name;
@@ -92,12 +93,21 @@ namespace WebApplication10
                 Label14.Text = seatStr;
                 Label15.Text = tot_price.ToString();
                 Label16.Text = "Done";
+
+
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/default.aspx");
+        }
+
+        public void Signout_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Write("Successfully logged out");
+            Response.Redirect("~/User-Info/Log-In.aspx");
         }
     }
 }
